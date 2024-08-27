@@ -13,7 +13,7 @@ local treesitter_postfix = require("luasnip.extras.treesitter_postfix").treesitt
 local M = {}
 local match_node = {
   query = [[
-        (
+
           (fenced_code_block_delimiter)
           (info_string
             (
@@ -22,7 +22,7 @@ local match_node = {
             )
           )
           (block_continuation) @prefix
-        )
+
       ]],
   query_lang = "markdown",
 }
