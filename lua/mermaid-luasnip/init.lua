@@ -35,11 +35,11 @@ function M.setup()
         {n1}["`{t1}`"]
         {n2}["`{t2}`"]
         {n1} --> {n2}
-  ]], {
-    n1 = "node1",
-    t1 = "Contents **markdown supported**",
-    n2 = "node2",
-    t2 = "Contents **markdown supported**",
+    ]], {
+    n1 = i(1, "node1"),
+    t1 = i(2, "Contents **markdown supported**"),
+    n2 = i(3, "node2"),
+    t2 = i(4, "Contents **markdown supported**"),
   }))
 end
 
