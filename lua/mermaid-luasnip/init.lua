@@ -12,14 +12,16 @@ local treesitter_postfix = require("luasnip.extras.treesitter_postfix").treesitt
 local M = {}
 local match_node = {
   query = [[
-        [
+        (
           (fenced_code_block_delimiter)
           (info_string
-            (language) @variable.language
-            (#eq? @variable.language "mermaid")
+            (
+              (language) @variable.language
+              (#eq? @variable.language "mermaid")
+            )
           )
-          (block_continuation)
-        ] @prefix
+          (block_continuation) @prefix
+        )
       ]],
   query_lang = "markdown",
 }
