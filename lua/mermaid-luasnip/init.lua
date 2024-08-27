@@ -8,6 +8,7 @@ local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
+local rep = require("luasnip.extras").rep
 local fmt = require("luasnip.extras.fmt").fmt
 local treesitter_postfix = require("luasnip.extras.treesitter_postfix").treesitter_postfix
 local M = {}
@@ -34,12 +35,14 @@ function M.setup()
       flowchart LR
         {n1}["`{t1}`"]
         {n2}["`{t2}`"]
-        {n1} --> {n2}
+        {n1rep} --> {n2rep}
     ]], {
       n1 = i(1, "node1"),
       t1 = i(2, "Contents **markdown supported**"),
       n2 = i(3, "node2"),
       t2 = i(4, "Contents **markdown supported**"),
+      n1rep = rep(1),
+      n2rep = rep(3),
     }))
   })
 end
