@@ -16,7 +16,7 @@ local match_node = {
           (fenced_code_block_delimiter)
           (info_string
             (language) @variable.language
-            (#eq? (@variable.language) "mermaid")
+            (#eq? @variable.language "mermaid")
           )
           (block_continuation) @prefix
           (code_fence_content))
