@@ -8,6 +8,7 @@ local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
+local fmt = require("luasnip.extras.fmt").fmt
 local treesitter_postfix = require("luasnip.extras.treesitter_postfix").treesitter_postfix
 local M = {}
 local match_node = {
@@ -29,18 +30,17 @@ function M.setup()
   treesitter_postfix({
     trig = "lr",
     matchTSNode = match_node,
-  }, {
-    t("flowchart LR\n  "),
-    i(1, "node1"),
-    t("[\"`"),
-    i(2, "Label (markdown)"),
-    t("`\"]"),
-    t("flowchart LR\n  "),
-    i(1, "node2"),
-    t("[\"`"),
-    i(2, "Label (markdown)"),
-    t("`\"]"),
-  })
+  }, fmt([[
+      flowchart LR
+        {n1}["`{t1}`"]
+        {n2}["`{t2}`"]
+        {n1} --> {n2}
+  ]], {
+    n1 = "node1",
+    t1 = "Contents **markdown supported**",
+    n2 = "node2",
+    t2 = "Contents **markdown supported**",
+  }))
 end
 
 return M
